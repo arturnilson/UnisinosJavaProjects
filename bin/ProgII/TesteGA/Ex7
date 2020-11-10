@@ -1,0 +1,5 @@
+Pesquisa sequencial: faz a varredura de um array comparando o valor pesquisado com o elemento de cada posição do vetor até que o valor seja encontrado ou o chegar ao final do array.
+
+Pesquisa sequencial ordenada: faz a varredura de um array comparando o valor pesquisado com o elemento de cada posição do vetor até que o valor seja encontrado ou até que o elemento seja menor que o valor passado.
+
+Pesquisa binária: funciona somente com arrays ordenados, divide repetidamente a porção da lista que deve conter o valor, até que  reduzir as localizações possíveis a apenas uma.

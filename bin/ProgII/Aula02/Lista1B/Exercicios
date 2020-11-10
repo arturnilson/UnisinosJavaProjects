@@ -1,0 +1,126 @@
+1. Sobrecarga é quando dois ou mais métodos possuem o mesmo nome, dentro da mesma classe ou em classes derivadas, com assinaturas diferentes. 
+
+class Celular {
+    private String modelo;
+    private String marca;
+    private String sistemaOperacional;
+
+    public Celular(String marca) {
+        this.marca = marca;
+    }
+
+    public Celular(String marca, String modelo, String sistemaOperacional) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.sistemaOperacional = sistemaOperacional;
+    }
+}
+
+
+2. Criar uma nova versão da classe pai (superclasse), dentro da classe filho. Quando se cria variações do método.
+
+public class calculadora{
+    public int soma( int a, int b){
+        return a + b;
+    }
+
+    public double soma( double a, double b){
+        return a + b;
+    }
+}
+
+3. Permite derivar uma nova classe especializada a partir de uma outra classe mais genérica. 
+Herdando atributos de uma superclasse e podendo conter atributos adicionais.
+
+public class Celular {
+    private String modelo;
+    private String marca;
+}
+
+public class Iphone extends Celular {}
+
+public class Motorola extends Celular {}
+
+4. É um método que deve é implementado nas subclasses e a superclasse funciona apenas como assinatura.
+É utilizada para um conjunto de classes que possuem atributos em comum contento pequenas diferenças entre eles.
+
+5. Serve para um conjunto de classes que possuem atributos em comum, funcionando como uma classe modelo para as classes que a extendem
+
+public abstract class Funcionario {
+    private String nome;
+    protect double salario;
+
+    public abstract double getBonus();
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+6. Para utilizar uma classe abstrata, ela deve necessariamente ser herdada, não podendo ser instanciada.
+
+7. Tem como objetivo criar um "contrato" onde a classe que a implementa deve obrigatoriamente obedecer.
+Trata-se de um contrato onde o programador é obrigado a implementar seus métodos;
+
+public interface Forma{
+    public String getNomeFigura();
+    public int getArea();
+    public int getPerimetro();
+}
+
+public class Quadrado implements Forma {
+    private int lado;
+
+    public int getLado() {
+        return lado;
+    }
+
+    public void setLado(int lado) {
+        this.lado = lado;
+    }
+
+    public int getArea() {
+        int area = 0;
+        area = lado * lado;
+
+        return area;
+    }
+
+    public int getPerimetro() {
+        int perimetro = 0;
+
+        perimetro = lado * 4;
+        return perimetro;
+    }
+
+    public String getNomeFigura() {
+        return "quadrado";
+    }
+}
+
+
+8. Princípio pelo qual duas ou mais classes derivadas de uma mesma superclasse podem invocar métodos com a mesma assinatura mas comportamentos distintos;
+
+public class Figura {
+    public double calcularArea() {
+        return 0;
+    }
+}
+
+public class Quadrado extends Figura {
+    double lado;
+
+    public Quadrado(double lado) {
+        this.lado = lado;
+    }
+
+    public double calcularArea() {
+        double area = 0;
+        area = lado * lado;
+        return area;
+    }
+}

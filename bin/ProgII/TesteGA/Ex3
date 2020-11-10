@@ -1,0 +1,57 @@
+A) Serve para um conjunto de classes que possuem atributos em comum, funcionando como uma classe modelo para as classes que a extendem
+
+B) 
+public abstract class Funcionario {
+    private String nome;
+    protect double salario;
+
+    public abstract double getBonus();
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+C) Tem como objetivo criar um "contrato" onde a classe que a implementa deve obrigatoriamente obedecer.
+Trata-se de um contrato onde o programador é obrigado a implementar seus métodos;
+
+D) 
+public interface Funcionario {
+    public double getBonificacao();
+}
+
+
+public class Gerente implements Funcionario {
+    private String nome;
+    private String cpf;
+    private double salario;
+
+    public Gerente(String nome, String cpf, double salario) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    @Override
+    public double getBonificacao() {
+        return salario * 1.25;
+    }
+}
+
+E. Uma classe abstrata pode conter métodos completos ou incompletos. Uma Interface pode conter apenas a assinatura de um método, mas nenhum corpo ou implementação

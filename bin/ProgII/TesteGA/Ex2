@@ -1,0 +1,13 @@
+A) Permite derivar uma nova classe especializada a partir de uma outra classe mais genérica. 
+Herdando atributos de uma superclasse e podendo conter atributos adicionais.
+
+B)
+public class Funcionario {
+    private String nome;
+    private String cpf;
+    private double salario;
+}
+
+public class Gerente extends Funcionario {}
+
+public class Operador extends Funcionario {}

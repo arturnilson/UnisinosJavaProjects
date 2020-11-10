@@ -1,0 +1,44 @@
+A) Sobrecarga é quando dois ou mais métodos possuem o mesmo nome, dentro da mesma classe ou em classes derivadas, com assinaturas diferentes. 
+
+B) 
+class Livro {
+    private String titulo;
+    private String editora;
+    private String autor;
+
+
+    public Livro(String titulo, String autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    public Livro(String editora, String titulo, String autor) {
+        this.editora = editora;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+}
+
+C) Criar uma nova versão da classe pai (superclasse), dentro da classe filho. Quando se cria variações do método.
+
+D)
+public class Funcionario{
+    public double calculaBonus(){
+        return salario * 0.10;
+    }
+
+    public double calculaBonus(double valor){
+        return salario * valor;
+    }
+
+    public void setNome() {IMPLEMENTAÇÃO X};
+    public void setNome() {IMPLEMENTAÇÃO Y};
+}
+
+E) A sobrescrita de métodos seria criar um novo método na classe filha contendo a mesma assinatura e mesmo tipo de retorno do método sobrescrito. (Override). 
+Ja o sobrecarga, permite métodos de mesmo nome mas com suas assinaturas diferentes;
+
+
+
+
+
