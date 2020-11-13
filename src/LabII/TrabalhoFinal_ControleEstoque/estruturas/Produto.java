@@ -25,8 +25,12 @@ public class Produto {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void aumentaQuantidade(int quantidade) {
+        this.quantidade += quantidade;
+    }
+
+    public void diminuiQuantidade(int quantidade) {
+        this.quantidade -= quantidade;
     }
 
     public int getQuantidadeMinEstoque() {
