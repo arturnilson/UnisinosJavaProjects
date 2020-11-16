@@ -109,18 +109,35 @@ public class MenuUI {
 
                 if (produtos.length == 0) {
                     System.out.println("Lista Vazia.");
+                    break;
                 }
 
                 for (int indx = 0; indx < produtos.length; indx++) {
                     Produto produto = (Produto) produtos[indx];
 
-                    System.out.println(produto.getCodigo() + " \t " + produto.getDescricao() + " \t "
-                            + produto.getQuantidade() + " \t " + produto.getQuantidadeMinEstoque());
+                    System.out.println("<< Produto " + produto.getCodigo() + " - " + produto.getDescricao() + " >>");
+                    System.out.println("Estoque Atual: " + produto.getQuantidade());
+                    System.out.println("Estoque Mínimo: " + produto.getQuantidadeMinEstoque() + "\n");
                 }
+
                 break;
 
             case 5:
                 System.out.println("---=== Listagem de Produtos Abaixo do Estoque ===---");
+                Object[] produtosAbaixo = controleEstoque.listarProdutosAbaixoEstoque();
+
+                if (produtosAbaixo == null) {
+                    System.out.println("Nenhum produto abaixo do estoque.");
+                    break;
+                }
+
+                for (int indx = 0; indx < produtosAbaixo.length; indx++) {
+                    Produto produto = (Produto) produtosAbaixo[indx];
+
+                    System.out.println("<< Produto " + produto.getCodigo() + " - " + produto.getDescricao() + " >>");
+                    System.out.println("Estoque Atual: " + produto.getQuantidade());
+                    System.out.println("Estoque Mínimo: " + produto.getQuantidadeMinEstoque() + "\n");
+                }
 
                 break;
         }

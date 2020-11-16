@@ -62,8 +62,22 @@ public class ControleEstoque {
         return listProdutos.toArray();
     }
 
-    public void listarProdutosAbaixoEstoque() {
+    public Object[] listarProdutosAbaixoEstoque() {
+        List<Produto> produtosAbaixoEstoque = new ArrayList<>();
+        Object[] produtos = this.listarProdutos();
 
+        for (int indx = 0; indx < produtos.length; indx++) {
+            Produto produto = (Produto) produtos[indx];
+            if (produto.getQuantidade() < produto.getQuantidadeMinEstoque()) {
+                produtosAbaixoEstoque.add(produto);
+            }
+        }
+
+        if (produtosAbaixoEstoque.size() == 0) {
+            return null;
+        }
+
+        return produtosAbaixoEstoque.toArray();
     }
 
 }

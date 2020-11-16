@@ -1,5 +1,6 @@
 package LabII.Laboratorio5_ListaChamadasAgendaContatos.listas;
 
+import java.io.InvalidClassException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +15,22 @@ public class ListaContatos {
         contatosAgenda = new ArrayList<>();
     }
 
-    public void adiciona(Contato contato) {
-        contatosAgenda.add(contato);
+    public void adiciona(Contato contato) throws InvalidClassException {
+        if (!(contato instanceof Contato)) {
+            throw new InvalidClassException("Adiciona deve receber classe tipo Contato.");
+        }
 
-        System.out.println(contato.getNome() + " foi adicionado(a) na Agenda");
+        contatosAgenda.add(contato);
     }
 
-    public void remove(int index) {
+    public Contato remove(int index) {
         if (index > contatosAgenda.size() - 1) {
             throw new InvalidIndexException("Código inválido.");
         }
 
         Contato removido = contatosAgenda.remove(index);
 
-        System.out.println(removido.getNome() + " foi removido(a) da Agenda.");
+        return removido;
     }
 
     public void mostrarContatos() {

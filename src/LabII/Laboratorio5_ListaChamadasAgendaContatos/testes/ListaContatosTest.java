@@ -9,11 +9,11 @@ public class ListaContatosTest {
         ListaContatos lc = new ListaContatos();
         ListaChamadas lchamadas = new ListaChamadas(lc);
 
-        lc.adiciona(new Contato("Joao", 1231123));
-        lc.adiciona(new Contato("Maria", 2222222));
-        lc.adiciona(new Contato("Julia", 3333333));
-        lc.adiciona(new Contato("Caio", 44444444));
-        lc.adiciona(new Contato("Marcos", 555555));
+        // lc.adiciona(new Contato("Joao", 1231123));
+        // lc.adiciona(new Contato("Maria", 2222222));
+        // lc.adiciona(new Contato("Julia", 3333333));
+        // lc.adiciona(new Contato("Caio", 44444444));
+        // lc.adiciona(new Contato("Marcos", 555555));
         lc.mostrarContatos();
 
         lc.remove(2);

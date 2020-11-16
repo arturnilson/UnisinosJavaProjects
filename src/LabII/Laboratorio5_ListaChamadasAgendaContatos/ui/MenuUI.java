@@ -46,13 +46,19 @@ public class MenuUI {
             case 1:
                 Scanner teclado1 = new Scanner(System.in);
 
-                System.out.println("----==== Cadastrar Contato ====----");
-                System.out.println("Informe o nome: ");
-                String nome = teclado1.nextLine();
-                System.out.println("Informe o número de telefone: ");
-                int telefone = teclado1.nextInt();
+                try {
+                    System.out.println("----==== Cadastrar Contato ====----");
+                    System.out.println("Informe o nome: ");
+                    String nome = teclado1.nextLine();
+                    System.out.println("Informe o número de telefone: ");
+                    int telefone = teclado1.nextInt();
 
-                listaContatos.adiciona(new Contato(nome, telefone));
+                    listaContatos.adiciona(new Contato(nome, telefone));
+                    System.out.println(nome + " foi adicionado(a) na Agenda");
+
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
 
                 break;
 
@@ -63,7 +69,9 @@ public class MenuUI {
 
                     System.out.println("Informe o código do contato que deseja excluir.");
                     int codigo = teclado2.nextInt();
-                    listaContatos.remove(codigo);
+                    Contato removido = listaContatos.remove(codigo);
+
+                    System.out.println(removido.getNome() + " foi removido(a) da Agenda.");
                 } catch (Exception e) {
                     System.out.println(e.toString());
                 }
