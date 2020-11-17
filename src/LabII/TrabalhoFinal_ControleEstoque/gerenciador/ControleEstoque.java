@@ -14,14 +14,14 @@ public class ControleEstoque {
         listProdutos = new ArrayList<>();
     }
 
-    public void insereProduto(int codigo, String descricao, int quantidade, int quantidadeMinEstoque) {
-        Produto produto = this.getProdutoByCodigo(codigo);
+    public void insereProduto(Produto prod) {
+        Produto produto = this.getProdutoByCodigo(prod.getCodigo());
 
         if (produto instanceof Produto) {
             throw new ProductAlreadyExists("Código já cadastrado em outro produto.");
         }
 
-        listProdutos.add(new Produto(codigo, descricao, quantidade, quantidadeMinEstoque));
+        listProdutos.add(prod);
     }
 
     public int entradaEstoque(int codigo, int entrada) {
@@ -73,7 +73,7 @@ public class ControleEstoque {
             }
         }
 
-        if (produtosAbaixoEstoque.size() == 0) {
+        if (produtosAbaixoEstoque.isEmpty()) {
             return null;
         }
 

@@ -58,7 +58,7 @@ public class MenuUI {
                     System.out.println("Informe a Quantidade Mínima: ");
                     int qtdMinima = teclado1.nextInt();
 
-                    controleEstoque.insereProduto(codProduto, nome, qtdEstoque, qtdMinima);
+                    controleEstoque.insereProduto(new Produto(codProduto, nome, qtdEstoque, qtdMinima));
                     System.out.println("Produto adicionado com sucesso!");
                 } catch (Exception e) {
                     System.out.println(e.toString());
