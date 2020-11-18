@@ -1,5 +1,10 @@
 package LabII.TrabalhoFinal_ControleEstoque.ui;
 
+/*
+ *  Artur Nilson
+ *  Jean Lukas Andrade Restelli 
+ */
+
 import java.util.Scanner;
 
 import LabII.TrabalhoFinal_ControleEstoque.estruturas.Produto;

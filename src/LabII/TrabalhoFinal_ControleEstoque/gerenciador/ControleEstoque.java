@@ -1,5 +1,10 @@
 package LabII.TrabalhoFinal_ControleEstoque.gerenciador;
 
+/*
+ *  Artur Nilson
+ *  Jean Lukas Andrade Restelli 
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

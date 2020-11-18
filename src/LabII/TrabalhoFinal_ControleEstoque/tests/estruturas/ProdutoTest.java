@@ -1,5 +1,10 @@
 package LabII.TrabalhoFinal_ControleEstoque.tests.estruturas;
 
+/*
+ *  Artur Nilson
+ *  Jean Lukas Andrade Restelli 
+ */
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

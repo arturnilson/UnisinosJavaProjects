@@ -1,5 +1,10 @@
 package LabII.TrabalhoFinal_ControleEstoque.estruturas;
 
+/*
+ *  Artur Nilson
+ *  Jean Lukas Andrade Restelli 
+ */
+
 public class Produto {
     private int codigo;
     private String descricao;

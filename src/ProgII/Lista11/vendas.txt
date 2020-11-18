@@ -1,0 +1,7 @@
+Iguatemi;SC;1;1;199.95
+Bourbon Nho;RS;2;2;99.80
+Bourbon Nho;RS;3;1;99.90
+Bourbon Nho;RS;4;3;239.70
+Iguatemi;RS;5;1;349.95
+Iguatemi;RS;6;1;179.90
+Morumbi Cap;SP;7;1;529.85
