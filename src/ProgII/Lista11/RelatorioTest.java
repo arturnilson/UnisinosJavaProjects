@@ -9,7 +9,7 @@ public class RelatorioTest {
 
         try {
             rel.load(new File("C:/Users/artur/JavaProjectsUnisinos/src/ProgII/Lista11/vendas.txt"));
-            rel.toString();
+            System.out.println(rel.toString());
         } catch (IOException e) {
             System.out.println(e.toString());
         }

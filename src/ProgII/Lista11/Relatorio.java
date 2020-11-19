@@ -22,21 +22,15 @@ public class Relatorio implements IRelatorio {
         String line = loadFile.readLine();
 
         while (line != null) {
-            System.out.println(line);
-            line = loadFile.readLine();
             String[] splitted = line.split(";");
-
             String loja = splitted[0];
             String uf = splitted[1];
             int nroNotaFiscal = Integer.parseInt(splitted[2]);
             int qtde = Integer.parseInt(splitted[3]);
             double valorVenda = Double.parseDouble(splitted[4]);
 
-            System.out.println(loja);
-            System.out.println(uf);
-            System.out.println(nroNotaFiscal);
-            System.out.println(valorVenda);
-            // listVendas.add(new VendaLoja(loja, uf, qtde, valorVenda, nroNotaFiscal));
+            listVendas.add(new VendaLoja(loja, uf, qtde, valorVenda, nroNotaFiscal));
+            line = loadFile.readLine();
         }
 
         loadFile.close();
@@ -60,7 +54,19 @@ public class Relatorio implements IRelatorio {
     }
 
     public String toString() {
-        return listVendas.toString();
+        StringBuilder string = new StringBuilder();
+        string.append("[\n");
+        for (int x = listVendas.size() - 1; x >= 0; x--) {
+            VendaLoja venda = listVendas.get(x);
+            string.append("Loja\t" + venda.getLoja() + "\n");
+            string.append("UF\t" + venda.getUf() + "\n");
+            string.append("NF\t" + venda.getNotaFiscal() + "\n");
+            string.append("Qtd\t" + venda.getQtde() + "\n");
+            string.append("Valor\t" + venda.getVlrVenda() + "\n\n");
+        }
+        string.append("]");
+
+        return string.toString();
     }
 
 }
