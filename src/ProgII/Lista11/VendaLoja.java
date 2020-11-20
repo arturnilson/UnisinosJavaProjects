@@ -35,4 +35,12 @@ public class VendaLoja {
         return notaFiscal;
     }
 
+    public int somaQtde(int quantidade) {
+        return qtde += quantidade;
+    }
+
+    public double somaValorVenda(double valor) {
+        return vlrVenda += valor;
+    }
+
 }
