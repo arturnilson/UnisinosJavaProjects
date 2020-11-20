@@ -14,6 +14,7 @@ public class RelatorioTest {
         try {
             rel.load(new File("C:/Users/artur/JavaProjectsUnisinos/src/ProgII/Lista11/vendas.txt"));
             System.out.println(rel.show());
+            System.out.println();
             System.out.println(rel.showBestStore());
 
             // rel.save(new File("C:/Users/artur/Desktop/vendasLoja.txt"));
