@@ -1,20 +1,23 @@
 package ProgII.Lista11;
 
+/*
+    Artur Nilson
+*/
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Relatorio implements IRelatorio {
-    private LinkedList<VendaLoja> listVendas;
-    private LinkedList<VendaLoja> listVendasPorLoja;
+    private SinglyLinkedList<VendaLoja> listVendasPorLoja;
 
     public Relatorio() {
-        listVendas = new LinkedList<>();
-        listVendasPorLoja = new LinkedList<>();
+        listVendasPorLoja = new SinglyLinkedList<>();
     }
 
     @Override
@@ -24,73 +27,91 @@ public class Relatorio implements IRelatorio {
         String line = loadFile.readLine();
 
         while (line != null) {
+            boolean controleInsertNovaVenda = false;
             String[] splitted = line.split(";");
 
             VendaLoja venda = new VendaLoja(splitted[0], splitted[1], Integer.parseInt(splitted[3]),
-                    Double.parseDouble(splitted[4]), Integer.parseInt(splitted[2]));
+                    Double.parseDouble(splitted[4]));
 
-            // String loja = splitted[0];
-            // String uf = splitted[1];
-            // int nroNotaFiscal = Integer.parseInt(splitted[2]);
-            // int qtde = Integer.parseInt(splitted[3]);
-            // double valorVenda = Double.parseDouble(splitted[4]);
+            for (int indx = 0; indx < listVendasPorLoja.numElements(); indx++) {
+                if ((splitted[0].equals(listVendasPorLoja.get(indx + 1).getLoja()))
+                        && (splitted[1].equals(listVendasPorLoja.get(indx + 1).getUf()))) {
+                    listVendasPorLoja.get(indx + 1).somaQtde(venda.getQtde());
+                    listVendasPorLoja.get(indx + 1).somaValorVenda(venda.getVlrVenda());
+                    controleInsertNovaVenda = true;
+                }
+            }
 
-            // int posicaoVenda = listVendas.indexOf(venda);
+            if (controleInsertNovaVenda == false) {
+                listVendasPorLoja.insertLast(venda);
+            }
 
-            // if (posicaoVenda > -1) {
-            // double valor = listVendas.get(posicaoVenda).getVlrVenda();
-            // int quantidade = listVendas.get(posicaoVenda).getQtde();
-
-            // listVendas.get(posicaoVenda).somaValorVenda(valor);
-            // listVendas.get(posicaoVenda).somaQtde(quantidade);
-
-            // } else {
-            // listVendas.add(venda);
-            // }
-
-            listVendas.add(venda);
             line = loadFile.readLine();
         }
 
         loadFile.close();
     }
 
-    private void trataSavePorLoja() {
-        for (int indx = 0; indx < listVendas.size() - 1; indx++) {
-            VendaLoja venda = listVendas.get(indx);
+    @Override
+    public String show() {
+        StringBuilder string = new StringBuilder();
+        int totalQtde = 0;
+        double totalVenda = 0;
 
-            for (int indy = 1; indy < listVendas.size(); indy++) {
-                VendaLoja venday = listVendas.get(indy);
-
-                if (venda.getLoja().equalsIgnoreCase(venday.getLoja())
-                        && venda.getUf().equalsIgnoreCase(venday.getUf())) {
-                    venday.somaQtde(venda.getQtde());
-                    venday.somaValorVenda(venda.getVlrVenda());
-                } else {
-                    listVendasPorLoja.add(venday);
-                }
-            }
-
+        string.append("\t\tVendas por Loja\n");
+        string.append("===============================================\n");
+        for (int i = 1; i <= listVendasPorLoja.numElements(); i++) {
+            VendaLoja venda = listVendasPorLoja.get(i);
+            string.append(venda.getLoja() + "\t\t");
+            string.append(venda.getUf() + "\t");
+            string.append(venda.getQtde() + "\t");
+            string.append(venda.getVlrVenda() + "\n");
+            totalQtde += venda.getQtde();
+            totalVenda += venda.getVlrVenda();
         }
+
+        NumberFormat f = new DecimalFormat("#.00");
+
+        string.append("===============================================\n");
+        string.append("\t\t\t\t" + totalQtde + "\t" + f.format(totalVenda));
+
+        return string.toString();
     }
 
     @Override
-    public void show() {
+    public String showBestStore() {
+        StringBuilder string = new StringBuilder();
+        double maiorValor = 0;
+        string.append("\tLoja(s) com a Maior Venda\n");
+        string.append("===============================================\n");
 
-    }
+        for (int i = 1; i <= listVendasPorLoja.numElements(); i++) {
+            VendaLoja venda = listVendasPorLoja.get(i);
+            if (venda.getVlrVenda() >= maiorValor) {
+                maiorValor = venda.getVlrVenda();
+            }
+        }
 
-    @Override
-    public void showBestStore() {
-        // TODO Auto-generated method stub
-
+        for (int y = 1; y <= listVendasPorLoja.numElements(); y++) {
+            VendaLoja venda = listVendasPorLoja.get(y);
+            if (venda.getVlrVenda() >= maiorValor) {
+                string.append(venda.getLoja() + "\t\t");
+                string.append(venda.getUf() + "\t");
+                string.append(venda.getQtde() + "\t");
+                string.append(venda.getVlrVenda() + "\n");
+            }
+        }
+        string.append("===============================================\n");
+        return string.toString();
     }
 
     @Override
     public void save(File file) throws IOException {
         BufferedWriter saveFile = new BufferedWriter(new FileWriter(file, true));
 
-        for (VendaLoja loja : listVendas) {
-            saveFile.write(toString(loja));
+        for (int i = 1; i <= listVendasPorLoja.numElements(); i++) {
+            VendaLoja venda = listVendasPorLoja.get(i);
+            saveFile.write(toString(venda));
             saveFile.newLine();
             saveFile.flush();
         }
@@ -98,40 +119,7 @@ public class Relatorio implements IRelatorio {
     }
 
     public String toString(VendaLoja loja) {
-        return loja.getLoja() + ";" + loja.getUf() + ";" + loja.getNotaFiscal() + ";" + loja.getQtde() + ";"
-                + loja.getVlrVenda();
-    }
-
-    public String showListaVendas() {
-        StringBuilder string = new StringBuilder();
-        string.append("[\n");
-        for (int x = listVendas.size() - 1; x >= 0; x--) {
-            VendaLoja venda = listVendas.get(x);
-            string.append("Loja\t" + venda.getLoja() + "\n");
-            string.append("UF\t" + venda.getUf() + "\n");
-            string.append("NF\t" + venda.getNotaFiscal() + "\n");
-            string.append("Qtd\t" + venda.getQtde() + "\n");
-            string.append("Valor\t" + venda.getVlrVenda() + "\n\n");
-        }
-        string.append("]");
-
-        return string.toString();
-    }
-
-    public String showListaVendasLoja() {
-        StringBuilder string = new StringBuilder();
-        string.append("[\n");
-        for (int x = listVendasPorLoja.size() - 1; x >= 0; x--) {
-            VendaLoja venda = listVendasPorLoja.get(x);
-            string.append("Loja\t" + venda.getLoja() + "\n");
-            string.append("UF\t" + venda.getUf() + "\n");
-            string.append("NF\t" + venda.getNotaFiscal() + "\n");
-            string.append("Qtd\t" + venda.getQtde() + "\n");
-            string.append("Valor\t" + venda.getVlrVenda() + "\n\n");
-        }
-        string.append("]");
-
-        return string.toString();
+        return loja.getLoja() + ";" + loja.getUf() + ";" + loja.getQtde() + ";" + loja.getVlrVenda();
     }
 
 }
