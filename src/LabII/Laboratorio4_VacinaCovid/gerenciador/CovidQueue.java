@@ -20,67 +20,45 @@ public class CovidQueue {
 
     public void addPaciente(String nome, int idade) {
         fila.add(new Paciente(nome, idade));
-
-        System.out.println("Paciente: " + nome + " adicionado(a) na fila\n");
     }
 
-    public void vacinarPaciente() {
-        if (this.isEmpty()) {
+    public Paciente vacinarPaciente() {
+        if (fila.isEmpty()) {
             throw new EstruturaVaziaException("Fila está vazia.");
         }
 
         Paciente paciente = fila.poll();
         listaVacinados.add(paciente);
 
-        System.out.println("Paciente Vacinado!");
-        System.out.print(paciente.getIdade() + " - ");
-        System.out.println(paciente.getNome());
-        System.out.println();
+        return paciente;
     }
 
-    public void next() {
-        if (this.isEmpty()) {
+    public Paciente next() {
+        if (fila.isEmpty()) {
             throw new EstruturaVaziaException("Fila está vazia.");
         }
 
         Paciente paciente = fila.peek();
 
-        System.out.println("Próximo Paciente: ");
-        System.out.print(paciente.getIdade() + " - ");
-        System.out.println(paciente.getNome());
-        System.out.println();
+        return paciente;
     }
 
-    public void getPacientesFila() {
-        if (this.isEmpty()) {
+    public PriorityQueue<Paciente> getPacientesFila() {
+        if (fila.isEmpty()) {
             throw new EstruturaVaziaException("Fila está vazia.");
         }
+        PriorityQueue<Paciente> filaAux = new PriorityQueue<>(fila);
 
-        System.out.println("Pacientes aguardando vacinação: ");
-        this.showPacientes(fila.toArray());
+        return filaAux;
     }
 
-    public void getPacientesVacinados() {
-        if (listaVacinados.size() == 0) {
+    public List<Paciente> getPacientesVacinados() {
+        if (listaVacinados.isEmpty()) {
             throw new EstruturaVaziaException("Lista está vazia.");
         }
 
-        System.out.println("Pacientes vacinados: ");
-        this.showPacientes(listaVacinados.toArray());
+        List<Paciente> listaAux = new ArrayList<Paciente>(listaVacinados);
+
+        return listaAux;
     }
-
-    private void showPacientes(Object[] arrayPacientes) {
-        for (int indx = 0; indx < arrayPacientes.length; indx++) {
-            Paciente paciente = (Paciente) arrayPacientes[indx];
-
-            System.out.print(paciente.getIdade() + " - ");
-            System.out.println(paciente.getNome());
-        }
-        System.out.println();
-    }
-
-    private boolean isEmpty() {
-        return fila.size() == 0;
-    }
-
 }
