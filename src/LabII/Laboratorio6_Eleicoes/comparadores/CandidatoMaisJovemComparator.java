@@ -1,5 +1,9 @@
 package LabII.Laboratorio6_Eleicoes.comparadores;
 
+/*
+ *   Artur Nilson
+ */
+
 import java.util.Comparator;
 
 import LabII.Laboratorio6_Eleicoes.estruturas.Candidato;

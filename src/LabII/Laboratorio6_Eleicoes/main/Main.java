@@ -1,5 +1,9 @@
 package LabII.Laboratorio6_Eleicoes.main;
 
+/*
+ *   Artur Nilson
+ */
+
 import LabII.Laboratorio6_Eleicoes.ui.MenuUI;
 
 public class Main {

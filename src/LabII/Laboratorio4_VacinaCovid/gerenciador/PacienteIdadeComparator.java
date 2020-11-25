@@ -1,5 +1,9 @@
 package LabII.Laboratorio4_VacinaCovid.gerenciador;
 
+/*
+ *   Artur Nilson
+ */
+
 import java.util.Comparator;
 
 import LabII.Laboratorio4_VacinaCovid.pacientes.Paciente;

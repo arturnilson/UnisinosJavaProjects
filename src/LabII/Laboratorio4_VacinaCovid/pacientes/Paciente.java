@@ -1,5 +1,9 @@
 package LabII.Laboratorio4_VacinaCovid.pacientes;
 
+/*
+ *   Artur Nilson
+ */
+
 public class Paciente {
     private String nome;
     private int idade;

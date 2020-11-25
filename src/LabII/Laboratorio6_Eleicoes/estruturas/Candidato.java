@@ -1,5 +1,9 @@
 package LabII.Laboratorio6_Eleicoes.estruturas;
 
+/*
+ *   Artur Nilson
+ */
+
 public class Candidato {
     private String nome;
     private String partido;

@@ -1,5 +1,9 @@
 package LabII.Laboratorio5_ListaChamadasAgendaContatos.estruturas;
 
+/*
+ *   Artur Nilson
+ */
+
 public class Contato {
     private String nome;
     private int telefone;

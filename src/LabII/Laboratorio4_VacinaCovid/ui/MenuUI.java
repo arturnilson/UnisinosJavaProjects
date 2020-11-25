@@ -1,5 +1,9 @@
 package LabII.Laboratorio4_VacinaCovid.ui;
 
+/*
+ *   Artur Nilson
+ */
+
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;

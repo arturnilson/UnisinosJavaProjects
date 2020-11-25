@@ -1,4 +1,8 @@
-package LabII.Laboratorio4_VacinaCovid.testes;
+package LabII.Laboratorio4_VacinaCovid.main;
+
+/*
+ *   Artur Nilson
+ */
 
 import LabII.Laboratorio4_VacinaCovid.ui.MenuUI;
 

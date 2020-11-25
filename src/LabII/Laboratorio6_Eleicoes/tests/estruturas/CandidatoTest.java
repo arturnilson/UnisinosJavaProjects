@@ -1,5 +1,9 @@
 package LabII.Laboratorio6_Eleicoes.tests.estruturas;
 
+/*
+ *   Artur Nilson
+ */
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
