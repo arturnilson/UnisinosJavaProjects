@@ -50,15 +50,13 @@ public class MenuUI {
                 Scanner teclado1 = new Scanner(System.in);
 
                 System.out.println("----==== Adicionar Paciente ====----");
-                // System.out.println("Informe o nome: ");
-                // String nome = teclado1.nextLine();
-                // System.out.println("Informe a idade: ");
-                // int idade = teclado1.nextInt();
+                System.out.println("Informe o nome: ");
+                String nome = teclado1.nextLine();
+                System.out.println("Informe a idade: ");
+                int idade = teclado1.nextInt();
 
-                // covidQueue.addPaciente(nome, idade);
-                // System.out.println("Paciente: " + nome + " adicionado(a) na fila\n");
-
-                adicionaPac();
+                covidQueue.addPaciente(nome, idade);
+                System.out.println("Paciente: " + nome + " adicionado(a) na fila\n");
 
                 break;
 
@@ -138,13 +136,4 @@ public class MenuUI {
         System.out.println();
     }
 
-    public void adicionaPac() {
-        covidQueue.addPaciente("asda", 50);
-        covidQueue.addPaciente("bbbb", 25);
-        covidQueue.addPaciente("cccc", 14);
-        covidQueue.addPaciente("ddd", 64);
-        covidQueue.addPaciente("eee", 33);
-        covidQueue.addPaciente("fff", 38);
-        covidQueue.addPaciente("ggg", 32);
-    }
 }
